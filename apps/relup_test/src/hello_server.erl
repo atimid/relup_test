@@ -8,7 +8,7 @@
 
 -behaviour(gen_server).
 
--vsn("1.1.0").
+-vsn("1.1.1").
 
 -export([start_link/0]).
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, terminate/2,
@@ -47,7 +47,7 @@ terminate(_Reason, _State = #hello_server_state{}) ->
 
 code_change(_OldVsn, State = #hello_server_state{}, _Extra) ->
     io:format("Code_Change : ~p~n", [{?MODULE, ?LINE, _OldVsn, _Extra}]),
-    {ok, State}.
+    {ok, State#hello_server_state{name = "world"}}.
 
 %%%===================================================================
 %%% Internal functions
